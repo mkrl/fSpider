@@ -8,10 +8,11 @@ body {
     margin: 0;
     height: 100%;
     width: 100%;
-    font-size: .85em;
+    font-size: 1em;
     font-family: "Segoe UI", Verdana, Helvetica, sans-serif;
     color: #232323;
     background-color: #fff;
+    background: url(./art_assets/bg1.jpg);
 }
 
 header, footer, nav, section {

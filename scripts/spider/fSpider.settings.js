@@ -151,9 +151,9 @@ fSpider.GameSettings = (function (GameSettings, $, ko, undefined) {
         this.volume = ko.observable();
         this.difficulty = ko.observable();
         this.difficultyOptions = ko.observableArray([
-            { text: '1 Suit', value: GameSettings.prototype.DIFFICULTIES.ONE_SUIT },
-            { text: '2 Suits', value: GameSettings.prototype.DIFFICULTIES.TWO_SUIT },
-            { text: '4 Suits', value: GameSettings.prototype.DIFFICULTIES.FOUR_SUIT }
+            { text: '1 масть', value: GameSettings.prototype.DIFFICULTIES.ONE_SUIT },
+            { text: '2 масти', value: GameSettings.prototype.DIFFICULTIES.TWO_SUIT },
+            { text: '4 масти', value: GameSettings.prototype.DIFFICULTIES.FOUR_SUIT }
         ]);
         this.animTime = ko.observable();
         this.animDelay = ko.observable();
@@ -252,7 +252,7 @@ fSpider.UISettings = (function (UISettings, $, ko, undefined) {
             score: {
                 elementId: 'score-display',
                 id: 'score-display-modal',
-                title: 'Score',
+                title: 'Очки',
                 position: { top: '', bottom: '60px', left: '95px', right: '' },
                 modalState: 1,
                 draggableOptions: {
@@ -290,7 +290,7 @@ fSpider.UISettings = (function (UISettings, $, ko, undefined) {
             time: {
                 elementId: 'time-display',
                 id: 'time-display-modal',
-                title: 'Time',
+                title: 'Время',
                 position: { top: '', bottom: '60px', left: '210px', right: '' },
                 modalState: 1,
                 draggableOptions: {

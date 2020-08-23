@@ -1,44 +1,31 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>Fuzzley - Spider Solitaire</title>
-    <link href="content/font_awesome/css/font-awesome.css" rel="stylesheet"/>
-    <link href="content/site.css" rel="stylesheet"/>
-    <link href="content/spider.css" rel="stylesheet"/>
+    <title>Пасьянс Паук</title>
+    <link href="./content/site.css" rel="stylesheet"/>
+    <link href="./content/spider.css" rel="stylesheet"/>
+    <link rel="manifest" href="./manifest.json">
 </head>
 <body>
-<div id="canvas-wrap">
-</div>
 <div id="ui-container">
-    <div id="score-display" class="lite-green" style="display: none;" data-bind="text: board.score"></div>
-    <div id="moves-display" class="lite-red" style="display: none;" data-bind="text: board.moves"></div>
-    <div id="time-display" class="lite-yellow" style="display: none;" data-bind="timeShortText: board.timeElapsed"></div>
-    <div id="options-wrap" style="display: none;">
-        <div>
-            <label for="animate-checkbox" style="float: left;">Animate</label>
-            <input id="animate-checkbox" name="animate-checkbox" style="float: right;" type="checkbox" data-bind="checked: gameSettings.animate" />
+    <div id="game-ctrls-container">
+        <div class="control-group">
+            <button class="big" id="new-game-btn">Новая игра</button>
+            <label for="difficulty-select"></label>
+            <select class="big" id="difficulty-select" name="difficulty-select"
+                    data-bind="options: gameSettings.difficultyOptions, optionsText: 'text', optionsValue: 'value', value: gameSettings.difficulty">
+            </select>
         </div>
-        <div class="clear"></div>
-        <div>
-            <label for="sound-checkbox" style="float: left;">Sound</label>
-            <input id="sound-checkbox" name="sound-checkbox" style="float: right;" type="checkbox" data-bind="checked: gameSettings.volume" />
-        </div>
-        <div class="clear"></div>
+        <button class="big" id="restart-btn" data-bind="enable: board.gameInProgress">Переиграть</button>
+        <button class="big" id="undo-btn" data-bind="enable: gameHistory.canUndo">Отменить ход</button>
+        <button class="big" id="redo-btn" data-bind="enable: gameHistory.canRedo">Повторить ход</button>
     </div>
-    <div id="game-ctrls-wrap" style="display: none;">
-        <button id="new-game-btn">New Game</button>
-        <label for="difficulty-select"></label>
-        <select id="difficulty-select" name="difficulty-select"
-                data-bind="options: gameSettings.difficultyOptions, optionsText: 'text', optionsValue: 'value', value: gameSettings.difficulty">
-        </select>
-        <button id="restart-btn" data-bind="enable: board.gameInProgress">Restart</button>
-        <button id="undo-btn" data-bind="enable: gameHistory.canUndo">Undo (Ctrl+Z)</button>
-        <button id="redo-btn" data-bind="enable: gameHistory.canRedo">Redo (Ctrl+Y)</button>
-    </div>
-    <div id="global-settings-open-wrap">
-        <button id="global-settings-open-btn"><i class="icon-cogs"></i></button>
+    <div class="board-stats">
+        <div id="score-wrap">Очки: <span data-bind="text: board.score"></span></div>
+        <div id="moves-wrap" >Ходы: <span data-bind="text: board.moves"></span></div>
+        <div id="time-wrap" >Время: <span data-bind="timeShortText: board.timeElapsed"></span></div>
     </div>
     <div id="dim-overlay" style="display: none;"></div>
     <div id="global-options-dlg" style="display: none;">
@@ -112,31 +99,41 @@
         </fieldset>
     </div>
 </div>
+<div id="canvas-wrap">
+</div>
 <div id="canvas-resources">
     <!-- cards -->
-    <img id="playing-card-assets-large" src="content/art_assets/cards/playing_card_assets_large.png"/>
+    <img id="playing-card-assets-large" src="./content/art_assets/cards/playing_card_assets_large.png"/>
 
     <!-- miscellaneous -->
-    <img id="tableau-ph" src="content/art_assets/cards/tableau_ph.png"/>
+    <img id="tableau-ph" src="./content/art_assets/cards/tableau_ph.png"/>
 </div>
 
-<script src="scripts/jquery/jquery-2.0.3.min.js"></script>
-<script src="scripts/knockout/knockout-3.0.0.js"></script>
-<script src="scripts/kinetic/kinetic-v4.7.4.min.js"></script>
-<script src="scripts/howler/howler.js"></script>
+<script src="./scripts/jquery/jquery-2.0.3.min.js"></script>
+<script src="./scripts/knockout/knockout-3.0.0.js"></script>
+<script src="./scripts/kinetic/kinetic-v4.7.4.min.js"></script>
+<script src="./scripts/howler/howler.js"></script>
 
-<script src="scripts/spider/fSpider.ui.draggable.js"></script>
-<script src="scripts/spider/fSpider.ui.modal.js"></script>
+<script src="./scripts/spider/fSpider.ui.draggable.js"></script>
+<script src="./scripts/spider/fSpider.ui.modal.js"></script>
 
-<script src="scripts/spider/fSpider.utils.js"></script>
-<script src="scripts/spider/fSpider.vmHub.js"></script>
-<script src="scripts/spider/fSpider.history.js"></script>
-<script src="scripts/spider/fSpider.settings.js"></script>
-<script src="scripts/spider/fSpider.card.js"></script>
-<script src="scripts/spider/fSpider.card.deck.js"></script>
-<script src="scripts/spider/fSpider.card.groups.js"></script>
-<script src="scripts/spider/fSpider.board.js"></script>
-<script src="scripts/spider/fSpider.debug.js"></script>
+<script src="./scripts/spider/fSpider.utils.js"></script>
+<script src="./scripts/spider/fSpider.vmHub.js"></script>
+<script src="./scripts/spider/fSpider.history.js"></script>
+<script src="./scripts/spider/fSpider.settings.js"></script>
+<script src="./scripts/spider/fSpider.card.js"></script>
+<script src="./scripts/spider/fSpider.card.deck.js"></script>
+<script src="./scripts/spider/fSpider.card.groups.js"></script>
+<script src="./scripts/spider/fSpider.board.js"></script>
+<script src="./scripts/spider/fSpider.debug.js"></script>
+
+<script>
+    if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("/sw.js").then(function(reg) {
+            console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+</script>
 
 <script type="text/javascript">
 var fSpider = fSpider || {};
@@ -302,7 +299,7 @@ fSpider.closeOptionsPane = function () {
 };
 
 fSpider.startNewGame = function () {
-    if (fSpider.board.gameInProgress !== true || confirm("Are you sure you want to start a new game? Your current game will be replaced.") === true) {
+    if (fSpider.board.gameInProgress !== true || confirm("Вы уверены, что хотите начать новую игру? Весь прогресс будет утерян.") === true) {
         fSpider.board.startNewGame();
         return true;
     }
@@ -310,7 +307,7 @@ fSpider.startNewGame = function () {
 };
 
 fSpider.restartGame = function () {
-    if (fSpider.board.gameInProgress === true && confirm("Are you sure you want to restart this game? Your progress will be lost.") === true) {
+    if (fSpider.board.gameInProgress === true && confirm("Вы уверены, что хотите начать эту игру заново? Весь прогресс будет утерян.") === true) {
         fSpider.board.restartGame();
         return true;
     }

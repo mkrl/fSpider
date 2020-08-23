@@ -1,0 +1,24 @@
+{
+  "name": "Пасьянс Паук",
+  "short_name": "Паук",
+  "theme_color": "#124d0f",
+  "background_color": "#124d0f",
+  "display": "standalone",
+  "scope": "/granny-spider",
+  "start_url": "https://mkrl.xyz/granny-spider",
+  "description": "Пасьянс Паук на русском языке",
+  "icons": [
+    {
+      "src": "./icons/512.png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "./icons/256.png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "./icons/128.png",
+      "sizes": "128x128"
+    }
+  ]
+}
