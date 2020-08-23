@@ -5,7 +5,7 @@
   "background_color": "#124d0f",
   "display": "standalone",
   "scope": "/granny-spider",
-  "start_url": "https://mkrl.xyz/granny-spider",
+  "start_url": "https://mkrl.xyz/granny-spider/",
   "description": "Пасьянс Паук на русском языке",
   "icons": [
     {
